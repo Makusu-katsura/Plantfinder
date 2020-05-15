@@ -3,15 +3,30 @@ import { Icon } from 'react-native-elements'
 import { StyleSheet, Text, View, Alert, StatusBar, TouchableOpacity, ImageBackground, Image, ScrollView, FlatList, Dimensions } from 'react-native'
 import Camera from './Camera'
 import style from './style'
+import axios from 'axios';
+import DeviceInfo, { getUniqueId } from 'react-native-device-info';
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import PlantData from './PlantData'
 import PlantMenu from './PlantMenu'
 import PlantBlog from './PlantBlog'
+const uid = DeviceInfo.getUniqueId();
 export class Menu extends Component {
     static navigationOptions = {    //เป็นการประกาศตัวแปรสำหรับการตั้งค่าของ body navigationOption
         headerShown: false,
         headerMode: 'none'
+    }
+    state = {
+        info: null,
+        class: null,
+        uri: null,
+        data:[]
+    };
+    constructor(props) {
+        super(props)
+        //this.getAnimalClass()//เรียกใช้ function getAnimalClas เมื่อเข้ามาถึงหน้านี้ทันที
+        this.makeRemoteRequest()
+
     }
     renderListHeader() {
         return (
@@ -20,6 +35,26 @@ export class Menu extends Component {
                     source={require('./image/5e6b982ecf10c.png')} /> */}
             </View>
         )
+    }
+    makeRemoteRequest = () => {
+        const id = uid;
+        const url = `https://flowey-server.herokuapp.com/getblog`;//url เชื่อม api กับ database โดยเพิ่ม animalClass ต่อท้ายเพื่อระบุสัตว์ที่จะดึงข้อมูล
+        const json={ color: 0, meaning: 0, giving: 0 }
+        
+        const url2 = url;
+        axios.get(url2)
+            .then((Data) => {
+                console.log("plant:", Data.data);
+                //const imageuri = Data.data;//ให้ animalClass มีค่าเป็นข้อมูลของสัตว์ที่ดึงมาจาก api
+                // console.log("animalInfo:", animalInfo);
+                // this.setState({ info: imageuri });//set state ให้ info มีค่าเป็นข้อมูลที่ดึงมาจาก api
+                this.setState({
+                    data: Data.data
+                })
+            })
+            .catch(err => {
+                console.log('plant error', err);
+            });
     }
     renderItem(item) {
         const { navigate } = this.props.navigation;
@@ -33,8 +68,8 @@ export class Menu extends Component {
                         source={require('./image/flowers.jpg')}
                         style={style.listavatar} />
                     <View style={style.listtitle}>
-                        <Text style={{ color: '#000000EE' }}>ช่อกุหลาบนั้นสำคัญไฉน </Text>
-                        <Text style={{ color: '#000000AA' }}>ทำไมต้องให้ในวันวาเลนไทน์?</Text>
+                        <Text style={{ color: '#000000EE' }}>{item.title.main} </Text>
+                        <Text style={{ color: '#000000AA' }}>{item.title.subtitle}</Text>
                     </View>
                 </View>
                 <Image
@@ -42,22 +77,7 @@ export class Menu extends Component {
                     style={{ width: '100%', height: 200 }} />
             </View>
             </TouchableOpacity>
-            <TouchableOpacity  onPress={() => navigate('Blog', { name: 'user' })}>
-                <View style={style.Cardstyle}>
-                    <View style={{ flexDirection: 'row', margin: 16 }}>
-                        <Image
-                            source={require('./image/purple_flowers-Summer_plant.jpg')}
-                            style={style.listavatar} />
-                        <View style={style.listtitle}>
-                            <Text style={{ color: '#000000EE' }}>มอบดอกไม้แทนใจ</Text>
-                            <Text style={{ color: '#000000AA' }}>ต้องโอกาสไหนถึงจะดี?</Text>
-                        </View>
-                    </View>
-                    <Image
-                        source={require('./image/Spring_Purple_Flowers.jpg')}
-                        style={{ width: '100%', height: 200 }} />
-                </View>
-            </TouchableOpacity>
+            
         
         </View>
         );
@@ -70,9 +90,10 @@ export class Menu extends Component {
             <ImageBackground style={{ width: '100%', height: '100%' }} source={require('./image/LifeisVeryBeautiful.jpg')}>
                 <View style={{ height: height - 85 }}>
                     <FlatList style={{ marginBottom: 50, marginTop: 50, paddingLeft: 28, paddingRight: 28 }} 
-                    data={[{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }, { key: '5' }]}
+                    data={this.state.data}
                         ListHeaderComponent={this.renderListHeader}
                         renderItem={({ item }) => this.renderItem(item)}
+                        keyExtractor={(item, blogid) => blogid.toString()}
                     >
 
                     </FlatList>

@@ -15,6 +15,10 @@ export default class PlantBlog extends Component {
         info: null,
         class: null,
         uri: null,
+        data: [],
+        title: [],
+        sub: [],
+        article: []
     };
     constructor(props) {
         super(props)
@@ -23,8 +27,8 @@ export default class PlantBlog extends Component {
         //console.log("stateClass:", this.state.class)
     }
     getplantInfo() {
-        const id = uid;
-        const url = `https://flowey-server.herokuapp.com/getimg/${id}`;//url เชื่อม api กับ database โดยเพิ่ม animalClass ต่อท้ายเพื่อระบุสัตว์ที่จะดึงข้อมูล
+        const id = 1;
+        const url = `https://flowey-server.herokuapp.com/getblog/${id}`;//url เชื่อม api กับ database โดยเพิ่ม animalClass ต่อท้ายเพื่อระบุสัตว์ที่จะดึงข้อมูล
 
         const url2 = url;
         axios.get(url2)
@@ -34,8 +38,11 @@ export default class PlantBlog extends Component {
                 // console.log("animalInfo:", animalInfo);
                 // this.setState({ info: imageuri });//set state ให้ info มีค่าเป็นข้อมูลที่ดึงมาจาก api
                 this.setState({
-                    uri: Data.data
+                    title: Data.data.title.main,
+                    sub: Data.data.title.subtitle,
+                    article: Data.data.article
                 })
+                console.log(Data.data.title)
             })
             .catch(err => {
                 console.log('plant error', err);
@@ -44,29 +51,18 @@ export default class PlantBlog extends Component {
     render() {
         return (
             <View style={styles.container}>
-                 <ScrollView style={styles.scrollView}>
-                <Text style={styles.menubtn}> ช่อกุหลาบนั้นสำคัญไฉน  </Text>
-                <Text style={styles.menubtn}> ทำไมต้องให้ในวันวาเลนไทน์? </Text>
-                <Image //source={{ uri: this.state.uri }}
-                source={require('./image/flowers.jpg')}
-                    style={[styles.avatar, styles.avatarContainer, ]}>
-                </Image>
-                        <Text style={styles.text}>วันแห่งความรักมีได้ทุกวัน แต่ถึงอย่างนั้นก็มีวันที่พิเศษมาก ๆ 
-                        นั่นก็คือวันที่ 14 กุมภาพันธ์ หรือวันวาเลนไทน์ที่คนทั่วโลกต่างก็ยกให้เป็นวันแห่งความรักนั่นเองค่ะ 
-                        และช่อกุหลาบกับวันวาเลนไทน์ก็ถือได้ว่าเป็นของคู่กัน ทำให้ไม่แปลกใจเลยว่าทำไมเวลามองไปทางไหน 
-                        เราก็มักจะเห็นดอกไม้แสนสวย กลิ่นหอมชนิดนี้อยู่ในมือของคู่รักเต็มไปหมด 
-                        แต่จะมีใครรู้บ้างว่าทำไมเจ้าดอกไม้ชนิดนี้ถึงได้กลายเป็นตัวแทนของความรัก 
-                        ความคิดถึงให้แก่คนทุกเพศทุกวัย และธรรมเนียมการมอบดอกกุหลาบเริ่มต้นขึ้นตั้งแต่ตอนไหน 
-                        ถ้าอยากรู้ล่ะก็ LoveYouFlower™ จะมาเล่าประวัติของวันแห่งความรักนี้ให้ทุกคนได้อ่านกันค่ะวันแห่งความรักมีได้ทุกวัน แต่ถึงอย่างนั้นก็มีวันที่พิเศษมาก ๆ 
-                        นั่นก็คือวันที่ 14 กุมภาพันธ์ หรือวันวาเลนไทน์ที่คนทั่วโลกต่างก็ยกให้เป็นวันแห่งความรักนั่นเองค่ะ 
-                        และช่อกุหลาบกับวันวาเลนไทน์ก็ถือได้ว่าเป็นของคู่กัน ทำให้ไม่แปลกใจเลยว่าทำไมเวลามองไปทางไหน 
-                        เราก็มักจะเห็นดอกไม้แสนสวย กลิ่นหอมชนิดนี้อยู่ในมือของคู่รักเต็มไปหมด 
-                        แต่จะมีใครรู้บ้างว่าทำไมเจ้าดอกไม้ชนิดนี้ถึงได้กลายเป็นตัวแทนของความรัก ความคิดถึงให้แก่คนทุกเพศทุกวัย 
-                        และธรรมเนียมการมอบดอกกุหลาบเริ่มต้นขึ้นตั้งแต่ตอนไหน ถ้าอยากรู้ล่ะก็ LoveYouFlower™ 
-                        จะมาเล่าประวัติของวันแห่งความรักนี้ให้ทุกคนได้อ่านกันค่ะ
+                <ScrollView 
+                style={styles.scrollView}>
+                    <Text style={styles.menubtn}> {this.state.title} </Text>
+                    <Text style={styles.menubtn}> {this.state.sub} </Text>
+                    <Image //source={{ uri: this.state.uri }}
+                        source={require('./image/flowers.jpg')}
+                        style={[styles.avatar, styles.avatarContainer,]}>
+                    </Image>
+                    <Text style={styles.text}>{this.state.article}
                         </Text>
 
-                        </ScrollView>
+                </ScrollView>
             </View>
 
         );
@@ -88,15 +84,16 @@ const styles = StyleSheet.create({
     scrollView: {
         flex: 1,
         flexWrap: 'wrap',
-        fontFamily: "Opun"
+        fontFamily: "Opun",
+        marginBottom: 15
     },
     text: {
-        marginTop:15,
+        marginTop: 15,
         fontSize: 17,
         paddingBottom: 15,
         fontFamily: "Opun",
-        marginLeft:15,
-        marginRight:15
+        marginLeft: 15,
+        marginRight: 15
     },
     textBox: {
         height: hp('40%'),
@@ -139,7 +136,7 @@ const styles = StyleSheet.create({
     },
     menubtn: {
         width: '100%',
-       // height: '15%',
+        // height: '15%',
         backgroundColor: 'white',
         borderRadius: 6,
         justifyContent: 'flex-start',

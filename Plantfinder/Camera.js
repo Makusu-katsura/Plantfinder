@@ -176,8 +176,9 @@ export default class Camera extends React.Component {
                             ) : (
                                     <View>
                                         <Image style={styles.avatar} 
-                                        //source={this.state.avatarSource} 
-                                        source={require('./image/exflower/Daffodil.jpg')}
+                                        source={this.state.avatarSource} 
+                                       // source={require('./image/exflower/Daffodil.jpg')
+                                    
                                         />
 
                                         <ProgressLoader

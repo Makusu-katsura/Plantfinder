@@ -64,7 +64,7 @@ export default class PlantData extends Component {
     // }
     getplantInfo() {
         const id = uid;
-        const url = `https://flowey-server.herokuapp.com/getflower/${id}`;//url เชื่อม api กับ database โดยเพิ่ม animalClass ต่อท้ายเพื่อระบุสัตว์ที่จะดึงข้อมูล
+        const url = `https://flowey-server.herokuapp.com/getimg/${id}`;//url เชื่อม api กับ database โดยเพิ่ม animalClass ต่อท้ายเพื่อระบุสัตว์ที่จะดึงข้อมูล
         const json={ color: 0, meaning: 0, giving: 0 }
         
         const url2 = url;
@@ -90,8 +90,8 @@ export default class PlantData extends Component {
                         <Text style={styles.menubtn}><Text> Information </Text></Text>
                     </View>
                     <View style={styles.container}>
-                        <Image //source={{ uri: this.state.uri }}
-                        source={require('./image/exflower/Daffodil.jpg')}
+                        <Image source={{ uri: this.state.uri }}
+                     //   source={require('./image/exflower/Daffodil.jpg')}
                             style={[styles.avatar, styles.avatarContainer, ]}>
                         </Image>
                     </View>

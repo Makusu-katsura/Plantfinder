@@ -71,57 +71,88 @@ export default class PlantMenu extends Component {
     };
     renderItem(item) {
         // console.log(this.state.data)
+        const { navigate } = this.props.navigation;
         return (
-            <TouchableOpacity>
+            // <ListItem
 
-                <ListItem
+            //     title={`${item.name.first} ${item.name.last}`}
+            //     subtitle={item.email}
+            //     leftAvatar={{ source: { uri: item.picture.thumbnail } }}
+            //     containerStyle={{ borderBottomWidth: 0 }}
+            // onPress={this.GetFlatListItem.bind(this, item.name)}
+            // />
 
-                    // title={`${item.name.first} ${item.name.last}`}
-                    // subtitle={item.email}
-                    // leftAvatar={{ source: { uri: item.picture.thumbnail } }}
-                    // containerStyle={{ borderBottomWidth: 0 }}
-                    title='ดอกกุหลาบ'
-                    subtitle='Rose'
-                    leftAvatar={{ source: require('./image/exflower/rose.jpg') }}
-                //onPress={this.GetFlatListItem.bind(this, item.name)}
-                />
+            <View>
+                <TouchableOpacity>
+                    <ListItem
+                        title='ดอกทานตะวัน'
+                        subtitle='Sunflower'
+                        leftAvatar={{ source: require('./image/exflower/sunflower.jpg') }}
+                        onPress={() => navigate('Data', { name: 'user' })}
+                    />
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <ListItem
+                        title='ดอกไอริส'
+                        subtitle='iris'
+                        leftAvatar={{ source: require('./image/exflower/iris.jpg') }}
+                        onPress={() => navigate('Data', { name: 'user' })}
+                    />
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <ListItem
+                        title='ดอกป็อปปี้'
+                        subtitle='poppy'
+                        leftAvatar={{ source: require('./image/exflower/popy.jpg') }}
+                        onPress={() => navigate('Data', { name: 'user' })}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <ListItem
+                        title='ดอกทิวลิป'
+                        subtitle='Tulip'
+                        leftAvatar={{ source: require('./image/exflower/Tulip.jpg') }}
+                        onPress={() => navigate('Data', { name: 'user' })}
+                    />
+                </TouchableOpacity>
+             
+                <TouchableOpacity>
+                    <ListItem
+                        title='ดอกโบตั๋น'
+                        subtitle='peony'
+                        leftAvatar={{ source: require('./image/exflower/peony.jpg') }}
+                        onPress={() => navigate('Data', { name: 'user' })}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <ListItem
+                        title='ดอกเดซี่'
+                        subtitle='daisy'
+                        leftAvatar={{ source: require('./image/exflower/daisy.jpg')}}
+                        onPress={() => navigate('Data', { name: 'user' })}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <ListItem
+                        title='ดอกพุดซ้อน'
+                        subtitle='Gardenia'
+                        leftAvatar={{ source: require('./image/exflower/Gardenia.jpg') }}
+                        onPress={() => navigate('Data', { name: 'user' })}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
                 <ListItem
-                    title='ดอกทานตะวัน'
-                    subtitle='Sunflower'
-                    leftAvatar={{ source: require('./image/exflower/sunflower.jpg') }}
-                //onPress={this.GetFlatListItem.bind(this, item.name)}
-                />
-                <ListItem
-                    title='ดอกเยอบีรา'
-                    subtitle='Gerbera'
-                    leftAvatar={{ source: require('./image/exflower/gebera.jpg') }}
-                //onPress={this.GetFlatListItem.bind(this, item.name)}
-                />
-                <ListItem
-                    title='ดอกมะลิ'
-                    subtitle='Jasmine'
-                    leftAvatar={{ source: require('./image/exflower/jasmine.jpg') }}
-                //onPress={this.GetFlatListItem.bind(this, item.name)}
-                />
-                <ListItem
-                    title='ดอกทิวลิป'
-                    subtitle='Tulip'
-                    leftAvatar={{ source: require('./image/exflower/Tulip.jpg') }}
-                //onPress={this.GetFlatListItem.bind(this, item.name)}
-                />
-                <ListItem
-                    title='ดอกยิปโซ'
-                    subtitle='Gypso'
-                    leftAvatar={{ source: require('./image/exflower/Gypso.jpg') }}
-                //onPress={this.GetFlatListItem.bind(this, item.name)}
-                />
-                <ListItem
-                    title='ดอกลิลลี่'
-                    subtitle='Lily'
-                    leftAvatar={{ source: require('./image/exflower/lily.jpg') }}
-                //onPress={this.GetFlatListItem.bind(this, item.name)}
+                    title='ดอกบานไม่รู้โรย'
+                    subtitle='Globe amaranth'
+                    leftAvatar={{ source: require('./image/exflower/Globeamaranth.jpg') }}
+                    onPress={() => navigate('Data', { name: 'user' })}
                 />
             </TouchableOpacity>
+            </View>
+
+
         );
     }
     searchData(text) {
@@ -169,8 +200,8 @@ export default class PlantMenu extends Component {
         const tabContent = (
             <FlatList
                 contentContainerStyle={{ hight: height - 20, paddingBottom: 56 }}
-                data={this.state.data}
-
+                //data={this.state.data}
+                data={id = '1'}
                 ItemSeparatorComponent={this.renderSeparator}
                 ListHeaderComponent={this.renderListHeader}
                 renderItem={({ item }) => this.renderItem(item)}
