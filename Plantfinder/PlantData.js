@@ -6,6 +6,10 @@ import DeviceInfo, { getUniqueId } from 'react-native-device-info';
 import ImageZoom from 'react-native-image-pan-zoom';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 const uid = DeviceInfo.getUniqueId();   //ดึง id ของเครื่อง user มาใช้เป็น user id 
+const fake ={name:'ดอกดารารัตน์', color: 'yellow',sciname:' Narcissus poeticus', 
+meaning: 'ดอกแดฟฟอดิล นิยมใช้มอบให้แก่คนที่รัก เพื่อบอกความในใจว่า อยากมอบความรักให้โดยไม่เคยต้องการสิ่งใดตอบแทน อีกทั้งยังหมายถึง เกียรติยศ ความกล้าหาญ สัญลักษณ์ของความหวัง อีกด้วย ', 
+giving: 'แสดงออกถึงความรัก' }
+
 export default class PlantData extends Component {
     static navigationOptions = {
         headerShown: false,
@@ -61,7 +65,8 @@ export default class PlantData extends Component {
     getplantInfo() {
         const id = uid;
         const url = `https://flowey-server.herokuapp.com/getflower/${id}`;//url เชื่อม api กับ database โดยเพิ่ม animalClass ต่อท้ายเพื่อระบุสัตว์ที่จะดึงข้อมูล
-
+        const json={ color: 0, meaning: 0, giving: 0 }
+        
         const url2 = url;
         axios.get(url2)
             .then((Data) => {
@@ -93,11 +98,11 @@ export default class PlantData extends Component {
 
                     <View style={styles.textBox}>
                         <ScrollView style={styles.scrollView}>
-                            <Text style={styles.text}>ชื่อ: ดอกดารารัตน์</Text>
-                            <Text style={styles.text}>สี:เหลือง</Text>
-                            <Text style={styles.text}>ชื่อวิทยาศาสตร์: Narcissus poeticus</Text>
-                            <Text style={styles.text}>ความหมาย: ดอกแดฟฟอดิล นิยมใช้มอบให้แก่คนที่รัก เพื่อบอกความในใจว่า อยากมอบความรักให้โดยไม่เคยต้องการสิ่งใดตอบแทน อีกทั้งยังหมายถึง เกียรติยศ ความกล้าหาญ สัญลักษณ์ของความหวัง อีกด้วย </Text>
-                            <Text style={styles.text}>โอกาส:</Text>
+                            <Text style={styles.text}>ชื่อ: {fake.name} </Text>
+                            <Text style={styles.text}>สี: {fake.color}</Text>
+                            <Text style={styles.text}>ชื่อวิทยาศาสตร์: {fake.sciname}</Text>
+                            <Text style={styles.text}>ความหมาย: {fake.meaning} </Text>
+                            <Text style={styles.text}>โอกาส: {fake.giving}</Text>
                         </ScrollView>
 
                     </View>
