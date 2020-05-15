@@ -7,11 +7,11 @@ import ImageZoom from 'react-native-image-pan-zoom';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 const uid = DeviceInfo.getUniqueId();   //ดึง id ของเครื่อง user มาใช้เป็น user id 
 const fake =
-{name:'ดอกดารารัตน์', 
-color: 'yellow',
-sciname:' Narcissus poeticus', 
-meaning: 'ดอกแดฟฟอดิล นิยมใช้มอบให้แก่คนที่รัก เพื่อบอกความในใจว่า อยากมอบความรักให้โดยไม่เคยต้องการสิ่งใดตอบแทน อีกทั้งยังหมายถึง เกียรติยศ ความกล้าหาญ สัญลักษณ์ของความหวัง อีกด้วย ', 
-giving: 'แสดงออกถึงความรัก' }
+{name: 'ดอกทิวลิป',
+color: 'มีหลายสี เช่น แดง, ส้ม, ขาว',
+sciname: 'Tulipa',
+meaning: 'ดอกทิวลิป เป็นสัญลักษณ์ของ  จินตนาการ ความใฝ่ฝัน คู่รักที่สมบูรณ์แบบ  และ ความรักที่เปิดเผย',
+giving: 'มอบให้เพื่อความมงคล แสดงถึงความรัก ความมั่นคง' }
 
 export default class PlantData extends Component {
     static navigationOptions = {
@@ -58,7 +58,7 @@ export default class PlantData extends Component {
                         <Text style={styles.menubtn}><Text> Information </Text></Text>
                     </View>
                     <View style={styles.container}>
-                        <Image source={{ uri: this.state.uri }}
+                        <Image source={require('./image/exflower/Tulip.jpg')}
                      //   source={require('./image/exflower/Daffodil.jpg')}
                             style={[styles.avatar, styles.avatarContainer, ]}>
                         </Image>

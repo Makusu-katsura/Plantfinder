@@ -10,6 +10,14 @@ import { createStackNavigator } from 'react-navigation-stack'
 import PlantData from './PlantData'
 import PlantMenu from './PlantMenu'
 import PlantBlog from './PlantBlog'
+import Sunflower from './Sunflower'
+import Iris from './Iris'
+import Poppy from './Poppy'
+import Tulip from './Tulip'
+import Peony from './Peony'
+import Daisy from './Daisy'
+import Gardenia from './Gardenia'
+import Globeamaranth from './Globe amaranth'
 const uid = DeviceInfo.getUniqueId();
 export class Menu extends Component {
     static navigationOptions = {    //เป็นการประกาศตัวแปรสำหรับการตั้งค่าของ body navigationOption
@@ -20,7 +28,7 @@ export class Menu extends Component {
         info: null,
         class: null,
         uri: null,
-        data:[]
+        data: []
     };
     constructor(props) {
         super(props)
@@ -39,8 +47,8 @@ export class Menu extends Component {
     makeRemoteRequest = () => {
         const id = uid;
         const url = `https://flowey-server.herokuapp.com/getblog`;//url เชื่อม api กับ database โดยเพิ่ม animalClass ต่อท้ายเพื่อระบุสัตว์ที่จะดึงข้อมูล
-        const json={ color: 0, meaning: 0, giving: 0 }
-        
+        const json = { color: 0, meaning: 0, giving: 0 }
+
         const url2 = url;
         axios.get(url2)
             .then((Data) => {
@@ -60,26 +68,26 @@ export class Menu extends Component {
         const { navigate } = this.props.navigation;
         return (
             <View>
-            
-            <TouchableOpacity  onPress={() => navigate('Blog', { name: 'user' })}>
-            <View style={style.Cardstyle}>
-                <View style={{ flexDirection: 'row', margin: 16 }}>
-                    <Image
-                        source={require('./image/flowers.jpg')}
-                        style={style.listavatar} />
-                    <View style={style.listtitle}>
-                        <Text style={{ color: '#000000EE' }}>{item.title.main} </Text>
-                        <Text style={{ color: '#000000AA' }}>{item.title.subtitle}</Text>
+
+                <TouchableOpacity onPress={() => navigate('Blog', { name: 'user' })}>
+                    <View style={style.Cardstyle}>
+                        <View style={{ flexDirection: 'row', margin: 16 }}>
+                            <Image
+                                source={require('./image/flowers.jpg')}
+                                style={style.listavatar} />
+                            <View style={style.listtitle}>
+                                <Text style={{ color: '#000000EE' }}>{item.title.main} </Text>
+                                <Text style={{ color: '#000000AA' }}>{item.title.subtitle}</Text>
+                            </View>
+                        </View>
+                        <Image
+                            source={require('./image/flowers.jpg')}
+                            style={{ width: '100%', height: 200 }} />
                     </View>
-                </View>
-                <Image
-                    source={require('./image/flowers.jpg')}
-                    style={{ width: '100%', height: 200 }} />
+                </TouchableOpacity>
+
+
             </View>
-            </TouchableOpacity>
-            
-        
-        </View>
         );
     }
     render() {
@@ -89,8 +97,8 @@ export class Menu extends Component {
 
             <ImageBackground style={{ width: '100%', height: '100%' }} source={require('./image/LifeisVeryBeautiful.jpg')}>
                 <View style={{ height: height - 85 }}>
-                    <FlatList style={{ marginBottom: 50, marginTop: 50, paddingLeft: 28, paddingRight: 28 }} 
-                    data={this.state.data}
+                    <FlatList style={{ marginBottom: 50, marginTop: 50, paddingLeft: 28, paddingRight: 28 }}
+                        data={this.state.data}
                         ListHeaderComponent={this.renderListHeader}
                         renderItem={({ item }) => this.renderItem(item)}
                         keyExtractor={(item, blogid) => blogid.toString()}
@@ -144,7 +152,15 @@ const AppStackNavigator = createStackNavigator({
     Camera: { screen: Camera },
     Data: { screen: PlantData },
     Plant: { screen: PlantMenu },
-    Blog: { screen: PlantBlog }
+    Blog: { screen: PlantBlog },
+    Sunflower: { screen: Sunflower },
+    Iris: { screen: Iris },
+    Poppy: { screen: Poppy },
+    Tulip: { screen: Tulip },
+    Peony: { screen: Peony },
+    Daisy: { screen: Daisy },
+    Gardenia: { screen: Gardenia },
+    Globeamaranth: { screen: Globeamaranth }
 },//เป็นการประกาศสร้างตัว stacknavigator ไว้สำหรับเปลี่ยนหน้าของข้อมูลไปยังหน้าต่างๆแบบ stack ซ้อนกัน
     {
         orientation: 'portrait',

@@ -88,7 +88,7 @@ export default class PlantMenu extends Component {
                         title='ดอกทานตะวัน'
                         subtitle='Sunflower'
                         leftAvatar={{ source: require('./image/exflower/sunflower.jpg') }}
-                        onPress={() => navigate('Data', { name: 'user' })}
+                        onPress={() => navigate('Sunflower', { name: 'user' })}
                     />
                 </TouchableOpacity>
 
@@ -97,7 +97,7 @@ export default class PlantMenu extends Component {
                         title='ดอกไอริส'
                         subtitle='iris'
                         leftAvatar={{ source: require('./image/exflower/iris.jpg') }}
-                        onPress={() => navigate('Data', { name: 'user' })}
+                        onPress={() => navigate('Iris', { name: 'user' })}
                     />
                 </TouchableOpacity>
 
@@ -106,7 +106,7 @@ export default class PlantMenu extends Component {
                         title='ดอกป็อปปี้'
                         subtitle='poppy'
                         leftAvatar={{ source: require('./image/exflower/popy.jpg') }}
-                        onPress={() => navigate('Data', { name: 'user' })}
+                        onPress={() => navigate('Poppy', { name: 'user' })}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -114,7 +114,7 @@ export default class PlantMenu extends Component {
                         title='ดอกทิวลิป'
                         subtitle='Tulip'
                         leftAvatar={{ source: require('./image/exflower/Tulip.jpg') }}
-                        onPress={() => navigate('Data', { name: 'user' })}
+                        onPress={() => navigate('Tulip', { name: 'user' })}
                     />
                 </TouchableOpacity>
              
@@ -123,7 +123,7 @@ export default class PlantMenu extends Component {
                         title='ดอกโบตั๋น'
                         subtitle='peony'
                         leftAvatar={{ source: require('./image/exflower/peony.jpg') }}
-                        onPress={() => navigate('Data', { name: 'user' })}
+                        onPress={() => navigate('Peony', { name: 'user' })}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -131,7 +131,7 @@ export default class PlantMenu extends Component {
                         title='ดอกเดซี่'
                         subtitle='daisy'
                         leftAvatar={{ source: require('./image/exflower/daisy.jpg')}}
-                        onPress={() => navigate('Data', { name: 'user' })}
+                        onPress={() => navigate('Daisy', { name: 'user' })}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -139,7 +139,7 @@ export default class PlantMenu extends Component {
                         title='ดอกพุดซ้อน'
                         subtitle='Gardenia'
                         leftAvatar={{ source: require('./image/exflower/Gardenia.jpg') }}
-                        onPress={() => navigate('Data', { name: 'user' })}
+                        onPress={() => navigate('Gardenia', { name: 'user' })}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -147,7 +147,7 @@ export default class PlantMenu extends Component {
                     title='ดอกบานไม่รู้โรย'
                     subtitle='Globe amaranth'
                     leftAvatar={{ source: require('./image/exflower/Globeamaranth.jpg') }}
-                    onPress={() => navigate('Data', { name: 'user' })}
+                    onPress={() => navigate('Globeamaranth', { name: 'user' })}
                 />
             </TouchableOpacity>
             </View>

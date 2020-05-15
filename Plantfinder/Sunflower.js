@@ -7,10 +7,10 @@ import ImageZoom from 'react-native-image-pan-zoom';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 const uid = DeviceInfo.getUniqueId();   //ดึง id ของเครื่อง user มาใช้เป็น user id 
 const fake =
-{name:'ดอกดารารัตน์', 
-color: 'yellow',
-sciname:' Narcissus poeticus', 
-meaning: 'ดอกแดฟฟอดิล นิยมใช้มอบให้แก่คนที่รัก เพื่อบอกความในใจว่า อยากมอบความรักให้โดยไม่เคยต้องการสิ่งใดตอบแทน อีกทั้งยังหมายถึง เกียรติยศ ความกล้าหาญ สัญลักษณ์ของความหวัง อีกด้วย ', 
+{name:'ดอกทานตะวัน', 
+color: 'เหลือง',
+sciname:' Helianthus annuus', 
+meaning: 'ในด้านความรัก ดอกทานตะวันนั้นสื่อถึงความรักบริสุทธิ์และมั่นคง เหมือนกับไคลทีที่เฝ้ามองเทพอพอลโลไม่ไปไหน ดังนั้นการเรามอบดอกทานตะวันให้ใครจึงหมายถึงการที่เราบอกผู้รับว่า ความรักของฉันที่มีให้เธอจะมั่นคง ไม่เปลี่ยนแปลง เหมือนที่ดอกทานตะวันเฝ้ามองดวงอาทิตย์เสมอไป และนอกจากความหมายซึ้ง ๆ แบบนี้แล้ว ดอกทานตะวันยังใช้สื่อถึงความร่าเริงสดใสและความสุข เหมาะสำหรับมอบให้เป็นของขวัญเพื่ออวยพรให้ผู้รับมีแต่ความสุขและความสดใส ', 
 giving: 'แสดงออกถึงความรัก' }
 
 export default class PlantData extends Component {
@@ -58,7 +58,7 @@ export default class PlantData extends Component {
                         <Text style={styles.menubtn}><Text> Information </Text></Text>
                     </View>
                     <View style={styles.container}>
-                        <Image source={{ uri: this.state.uri }}
+                        <Image source={require('./image/exflower/sunflower.jpg')}
                      //   source={require('./image/exflower/Daffodil.jpg')}
                             style={[styles.avatar, styles.avatarContainer, ]}>
                         </Image>
